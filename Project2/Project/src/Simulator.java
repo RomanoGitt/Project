@@ -55,15 +55,14 @@ public class Simulator implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		setActionEvent(e);
 
-		Thread nieuweThread = new Thread() {
+		Thread buttonThread = new Thread() {
 
 			public void run() {
 				ActionEvent event = getActionEvent();
 
 				String command = event.getActionCommand();
 
-				if (command == "1 Tick") {
-					System.out.println("mogguh");
+				if (command.equals("1 Tick")) {
 					for (int i = 0; i < 1; i++) {
 						tick();
 					}
@@ -76,7 +75,7 @@ public class Simulator implements ActionListener {
 				}
 			}
 		};
-		nieuweThread.start();
+		buttonThread.start();
 	}
 
 	private void tick() {
