@@ -73,6 +73,18 @@ public class Simulator implements ActionListener {
 						tick();
 					}
 				}
+				
+				else if (command.equals("Status")) {
+					JFrame statusWindow = new JFrame();
+					Status contents = new Status();
+					Integer numberOfPlaces = simulatorView.getNumberOfFloors() * simulatorView.getNumberOfRows() * simulatorView.getNumberOfPlaces();
+					
+					contents.setNumberOfParkingPlaces(numberOfPlaces);
+					statusWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					statusWindow.getContentPane().add(contents);
+					statusWindow.setSize(400, 200);
+					statusWindow.setVisible(true);
+				}
 			}
 		};
 		buttonThread.start();

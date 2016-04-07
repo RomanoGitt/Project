@@ -31,10 +31,14 @@ public class SimulatorView extends JFrame {
 
 		JButton button100 = new JButton("100 Tick's");
 		button100.addActionListener(sim);
+		
+		JButton buttonStatus = new JButton("Status");
+		buttonStatus.addActionListener(sim);
 
 		JToolBar menu = new JToolBar();
 		menu.add(button1);
 		menu.add(button100);
+		menu.add(buttonStatus);
 
 		contentPane.add(menu, BorderLayout.NORTH);
 

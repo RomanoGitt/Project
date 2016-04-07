@@ -3,8 +3,8 @@ public abstract class Car {
 	private Location location;
 	private int minutesLeft;
 	private boolean isPaying;
-	private int payed = 0;
-	private int notPayed = 0;
+	//private int payed = 0;
+	//private int notPayed = 0;
 	/**
 	 * Constructor for objects of class Car
 	 */
@@ -40,20 +40,17 @@ public abstract class Car {
 		minutesLeft--;
 	}
 	
-	public int betaald(){
-		if (isPaying = true ){
-			payed++;
-		}
-		System.out.println(payed);
-		return payed;
+	public int handlePayment(){
+		//TODO Betalingen afhandelen en een waarde bijhouden in Simulator class.
+		return 0;
 	}
 	
-	public int unpayed(){
+	/*public int unpayed(){
 			if (isPaying = false){
 				notPayed++;
 			}
 		System.out.println(notPayed);
 		return notPayed;
-	}
+	}*/
 
 }
