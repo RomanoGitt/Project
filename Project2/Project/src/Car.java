@@ -41,7 +41,7 @@ public abstract class Car {
 	}
 	
 	public int handlePayment(){
-		//TODO Betalingen afhandelen en een waarde bijhouden in Simulator class.
+		//TODO Betalingen afhandelen en een waarde bijhouden in Simulator class.  
 		return 0;
 	}
 	

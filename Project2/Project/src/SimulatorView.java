@@ -38,7 +38,7 @@ public class SimulatorView extends JFrame {
 		JToolBar menu = new JToolBar();
 		menu.add(button1);
 		menu.add(button100);
-		menu.add(buttonStatus);
+		menu.add(buttonStatus); 
 
 		contentPane.add(menu, BorderLayout.NORTH);
 

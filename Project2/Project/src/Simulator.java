@@ -84,7 +84,7 @@ public class Simulator implements ActionListener {
 					statusWindow.getContentPane().add(contents);
 					statusWindow.setSize(400, 200);
 					statusWindow.setVisible(true);
-				}
+				}  
 			}
 		};
 		buttonThread.start();
