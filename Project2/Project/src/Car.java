@@ -3,7 +3,8 @@ public abstract class Car {
 	private Location location;
 	private int minutesLeft;
 	private boolean isPaying;
-
+	private int payed = 0;
+	private int notPayed = 0;
 	/**
 	 * Constructor for objects of class Car
 	 */
@@ -40,7 +41,6 @@ public abstract class Car {
 	}
 	
 	public int betaald(){
-		int payed = 0;
 		if (isPaying = true ){
 			payed++;
 		}
@@ -49,7 +49,6 @@ public abstract class Car {
 	}
 	
 	public int unpayed(){
-		int notPayed = 0 ;
 			if (isPaying = false){
 				notPayed++;
 			}
