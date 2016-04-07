@@ -38,5 +38,23 @@ public abstract class Car {
 	public void tick() {
 		minutesLeft--;
 	}
+	
+	public int betaald(){
+		int payed = 0;
+		if (isPaying = true ){
+			payed++;
+		}
+		System.out.println(payed);
+		return payed;
+	}
+	
+	public int unpayed(){
+		int notPayed = 0 ;
+			if (isPaying = false){
+				notPayed++;
+			}
+		System.out.println(notPayed);
+		return notPayed;
+	}
 
 }
