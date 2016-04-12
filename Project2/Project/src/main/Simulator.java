@@ -66,7 +66,7 @@ public class Simulator {
 	public void tick() {
 		// Advance the time by one minute.
 		minute++;
-		graphView.setCarsParked(parkedCars);
+	
 		while (minute > 59) {
 			minute -= 60;
 			hour++;
