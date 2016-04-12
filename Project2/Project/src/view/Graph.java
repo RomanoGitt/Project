@@ -28,20 +28,8 @@ public class Graph extends Application {
         series1.getData().add(new XYChart.Data(brazil, 20148.82));
      
         
-        XYChart.Series series2 = new XYChart.Series();
-        series2.setName("2004");
-        series2.getData().add(new XYChart.Data(austria, 57401.85));
-        series2.getData().add(new XYChart.Data(brazil, 41941.19));
-  
-        
-        XYChart.Series series3 = new XYChart.Series();
-        series3.setName("2005");
-        series3.getData().add(new XYChart.Data(austria, 45000.65));
-        series3.getData().add(new XYChart.Data(brazil, 44835.76));
- 
-        
         Scene scene  = new Scene(bc,800,600);
-        bc.getData().addAll(series1, series2, series3);
+        bc.getData().addAll(series1);
         stage.setScene(scene);
         stage.show();
     }
