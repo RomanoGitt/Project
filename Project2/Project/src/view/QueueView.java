@@ -37,7 +37,7 @@ public class QueueView extends JPanel {
 	
 	public int getPaymentQueue() {
 		return paymentQueue;
-	}
+	} 
 	
 	public int getExitQueue() {
 		return exitQueue;
