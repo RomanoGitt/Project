@@ -3,6 +3,8 @@ public abstract class Car {
     private Location location;
     private int minutesLeft;
     private boolean isPaying;
+    private boolean hasParkPass;
+    private boolean isReserved;
 
     /**
      * Constructor for objects of class Car
@@ -37,6 +39,14 @@ public abstract class Car {
 
     public void tick() {
         minutesLeft--;
+    }
+    
+    public boolean hasParkPass() {
+    	return hasParkPass;
+    }
+    
+    public void setHasParkPass(boolean parkPass) {
+    	hasParkPass = parkPass;
     }
 
 }
