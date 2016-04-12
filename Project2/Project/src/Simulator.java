@@ -15,7 +15,8 @@ public class Simulator {
 
 	private int tickPause = 100;
 
-	private int carsParked = 0;
+	private int totalCarsParked = 0;
+	private int resCarsParked = 0;
 	private int numberOfPlaces = 0;
 	private int priceToPay = 9;
 
@@ -33,7 +34,7 @@ public class Simulator {
 		simulatorView = new SimulatorView(3, 6, 30, this);
 		numberOfPlaces = simulatorView.getNumberOfFloors() * simulatorView.getNumberOfRows()
 				* simulatorView.getNumberOfPlaces();
-		simulatorView.updateStatus(numberOfPlaces, carsParked);
+		simulatorView.updateStatus(numberOfPlaces, totalCarsParked);
 	}
 
 	public static void main(String[] args) {
@@ -59,7 +60,7 @@ public class Simulator {
 		while (hour > 23) {
 			hour -= 24;
 			day++;
-			carsParked = 0;
+			totalCarsParked = 0;
 		}
 		while (day > 6) {
 			day -= 7;
@@ -80,10 +81,15 @@ public class Simulator {
 			if (random.nextInt(10) < 1) {
 				Car car = new ResCar();
 				entranceCarQueue.addCar(car);
+				totalCarsParked++;
+				resCarsParked++;
+				car.setIsReserved(true);
 				//Hier plek reserveren??????????????????????????????????????????????????????????????????????????.........
 			} else {
 				Car car = new AdHocCar();
 				entranceCarQueue.addCar(car);
+				totalCarsParked++;
+				car.setIsReserved(false);
 			}
 		}
 
@@ -98,9 +104,8 @@ public class Simulator {
 			Location freeLocation = simulatorView.getFirstFreeLocation(car);
 			if (freeLocation != null) {
 				simulatorView.setCarAt(freeLocation, car);
-				carsParked++;
-				simulatorView.updateStatus(numberOfPlaces, carsParked);
-				simulatorView.setEstimatedIncome(priceToPay * carsParked);
+				simulatorView.updateStatus(numberOfPlaces, totalCarsParked);
+				simulatorView.setEstimatedIncome(priceToPay * totalCarsParked);
 				int stayMinutes = (int) (15 + random.nextFloat() * 10 * 60);
 				car.setMinutesLeft(stayMinutes);
 			}
