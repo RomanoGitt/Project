@@ -48,5 +48,13 @@ public abstract class Car {
     public void setHasParkPass(boolean parkPass) {
     	hasParkPass = parkPass;
     }
+    
+    public boolean isReserved() {
+    	return isReserved;
+    }
+    
+    public void setIsReserved(boolean reserved) {
+    	isReserved = reserved;
+    }
 
 }
