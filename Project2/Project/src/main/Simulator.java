@@ -22,6 +22,8 @@ public class Simulator {
 	private int minute = 0;
 
 	private int tickPause = 100;
+	
+	private int parkedCars = 0;
 
 	private int totalCarsParked = 0;
 	private int resCarsParked = 0;
@@ -103,6 +105,7 @@ public class Simulator {
 
 		// Remove car from the front of the queue and assign to a parking space.
 		for (int i = 0; i < enterSpeed; i++) {
+			parkedCars++;
 			//if (car instanceof ReservationCar){ Geef deze gast een gereserveerde plek }.....................................
 			Car car = entranceCarQueue.removeCar();
 			if (car == null) {
@@ -175,6 +178,7 @@ public class Simulator {
 
 		// Let cars leave.
 		for (int i = 0; i < exitSpeed; i++) {
+			parkedCars--;
 			Car car = exitCarQueue.removeCar();
 			if (car == null) {
 				break;
