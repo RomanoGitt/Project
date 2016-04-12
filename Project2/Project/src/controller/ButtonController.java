@@ -47,7 +47,11 @@ public class ButtonController implements ActionListener{
 						break;
 					case "showStatus":
 						simulator.getSimulatorView().toggleStatusVisible();
+						break;
+					case "showGraph":
+						break;
 					}
+					
 
 				}
 			};

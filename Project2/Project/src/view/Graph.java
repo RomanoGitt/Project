@@ -22,12 +22,18 @@ class MyComponent extends JComponent {
 	private int carsParked;
 	private int totalSpaces = 540;
 	private int freeSpaces = totalSpaces - carsParked;
+	private Slice[] slices;
 	
 	public int getCarsParked(){
 		return carsParked;
 	}
 	
-	Slice[] slices = { new Slice(carsParked, Color.black), new Slice(freeSpaces, Color.green) };
+	public void setCarsParked(int x){
+		carsParked = x;
+		slices = { new Slice(carsParked, Color.black), new Slice(freeSpaces, Color.blue) };
+	}
+	
+	
 
 	MyComponent() {}
 
@@ -53,10 +59,21 @@ class MyComponent extends JComponent {
 }
 
 public class Graph {
+	private	JFrame frame = new JFrame();
+	private	MyComponent content = new MyComponent();
 	public Graph() {
-		JFrame frame = new JFrame();
-		frame.getContentPane().add(new MyComponent());
+		
+	//	content.get
+		
+		frame.getContentPane().add(content);
 		frame.setSize(300, 200);
 		frame.setVisible(true);
+	}
+	public int getCarsParked(){
+		return content.getCarsParked();
+	}
+	
+	public void setCarsParked(int x){
+		content.setCarsParked(x);
 	}
 }

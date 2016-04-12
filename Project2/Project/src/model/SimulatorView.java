@@ -24,6 +24,7 @@ public class SimulatorView extends JFrame {
     public JButton button100;
     public JButton button1440;
     public JButton buttonStatus;
+    public JButton buttonGraph;
 
     public SimulatorView(int numberOfFloors, int numberOfRows, int numberOfPlaces, Simulator sim) {
         this.numberOfFloors = numberOfFloors;
@@ -58,6 +59,10 @@ public class SimulatorView extends JFrame {
         buttonStatus = new JButton("Hide status");
         buttonStatus.setActionCommand("showStatus");
         buttonStatus.addActionListener(buttonController);
+        
+        buttonGraph = new JButton("Spaces Pie");
+        buttonGraph.setActionCommand("showGraph");
+        buttonGraph.addActionListener(buttonController);
 
 
         JToolBar menu = new JToolBar();
@@ -65,6 +70,7 @@ public class SimulatorView extends JFrame {
         menu.add(button100);
         menu.add(button1440);
         menu.add(buttonStatus);
+        menu.add(buttonGraph);
 
         contentPane.add(menu, BorderLayout.NORTH);
 
