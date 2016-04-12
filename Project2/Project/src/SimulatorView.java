@@ -8,6 +8,7 @@ public class SimulatorView extends JFrame {
     private int numberOfRows;
     private int numberOfPlaces;
     private Car[][][] cars;
+    private ButtonController buttonController;
 
     public JButton button1;
     public JButton button100;
@@ -23,6 +24,8 @@ public class SimulatorView extends JFrame {
         Container contentPane = getContentPane();
         carParkView = new CarParkView();
         statusView = new Status();
+        buttonController = new ButtonController(sim);
+        
         contentPane.add(statusView, BorderLayout.SOUTH);
 
 
@@ -32,19 +35,19 @@ public class SimulatorView extends JFrame {
 
         button1 = new JButton("1 Tick");
         button1.setActionCommand("1tick");
-        button1.addActionListener(sim);
+        button1.addActionListener(buttonController);
 
         button100 = new JButton("100 Tick's");
         button100.setActionCommand("100ticks");
-        button100.addActionListener(sim);
+        button100.addActionListener(buttonController);
 
         button1440 = new JButton("1440 Ticks (1 day)");
         button1440.setActionCommand("1440ticks");
-        button1440.addActionListener(sim);
+        button1440.addActionListener(buttonController);
 
         buttonStatus = new JButton("Hide status");
         buttonStatus.setActionCommand("showStatus");
-        buttonStatus.addActionListener(sim);
+        buttonStatus.addActionListener(buttonController);
 
 
         JToolBar menu = new JToolBar();

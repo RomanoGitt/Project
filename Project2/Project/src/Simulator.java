@@ -2,7 +2,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
-public class Simulator implements ActionListener {
+public class Simulator {
 
 	private CarQueue entranceCarQueue;
 	private CarQueue paymentCarQueue;
@@ -40,57 +40,16 @@ public class Simulator implements ActionListener {
 		Simulator sim = new Simulator();
 		// sim.run();
 	}
+	
+	public SimulatorView getSimulatorView() {
+		return simulatorView;
+	}
 
 	/*
 	 * public void run() { for (int i = 0; i < 10000; i++) { tick(); } }
 	 */
 
-	// Button events afvangen
-	private ActionEvent event;
-
-	public void setActionEvent(ActionEvent e) {
-		event = e;
-	}
-
-	public ActionEvent getActionEvent() {
-		return event;
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		setActionEvent(e);
-
-		Thread buttonListenerThread = new Thread() {
-			public void run() {
-				ActionEvent event = getActionEvent();
-				String command = event.getActionCommand();
-
-				switch (command) {
-				case "1tick":
-					for (int i = 0; i < 1; i++) {
-						tick();
-					}
-					break;
-				case "100ticks":
-					for (int i = 0; i < 100; i++) {
-						tick();
-					}
-					break;
-				case "1440ticks":
-					for (int i = 0; i < 1440; i++) {
-						tick();
-					}
-					break;
-				case "showStatus":
-					simulatorView.toggleStatusVisible();
-				}
-
-			}
-		};
-		buttonListenerThread.start();
-	}
-
-	private void tick() {
+	public void tick() {
 		// Advance the time by one minute.
 		minute++;
 		while (minute > 59) {
