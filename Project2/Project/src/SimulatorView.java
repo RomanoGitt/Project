@@ -228,7 +228,7 @@ public class SimulatorView extends JFrame {
             }
         }
     
-        public void updateView() {
+       /* public void updateView() {
             // Create a new car park image if the size has changed.
             if (!size.equals(getSize())) {
                 size = getSize();
@@ -246,7 +246,42 @@ public class SimulatorView extends JFrame {
                 }
             }
             repaint();
-        }
+        }*/
+        
+		public void updateView() {
+			// Create a new car park image if the size has changed.
+			if (!size.equals(getSize())) {
+				size = getSize();
+				carParkImage = createImage(size.width, size.height);
+			}
+			Graphics graphics = carParkImage.getGraphics();
+			for (int floor = 0; floor < getNumberOfFloors(); floor++) {
+				for (int row = 0; row < getNumberOfRows(); row++) {
+					for (int place = 0; place < getNumberOfPlaces(); place++) {
+						Location location = new Location(floor, row, place);
+						Car car = getCarAt(location);
+						if (car instanceof AdHocCar) {
+							Color color = car == null ? Color.white : Color.red;
+							drawPlace(graphics, location, color);
+						} else if (car instanceof ReservationCar) {
+							Color color = car == null ? Color.white : Color.green;
+							drawPlace(graphics, location, color);
+						} else {
+							if(place >= 60){
+								Color color = car == null ? Color.blue : Color.green;
+								drawPlace(graphics, location, color);
+							}
+							else{
+								Color color = car == null ? Color.white : Color.green;
+								drawPlace(graphics, location, color);
+							}
+						}
+					}
+				}	
+			}
+			
+			repaint();
+		}
     
         /**
          * Paint a place on this car park view in a given color.
