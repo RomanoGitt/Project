@@ -1,3 +1,4 @@
+package logic;
 public class Location {
 
     private int floor;

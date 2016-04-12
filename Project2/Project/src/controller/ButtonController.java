@@ -1,5 +1,8 @@
+package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import main.Simulator;
 
 public class ButtonController implements ActionListener{
 	private ActionEvent event;

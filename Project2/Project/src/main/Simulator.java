@@ -1,6 +1,14 @@
+package main;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
+
+import logic.AdHocCar;
+import logic.Car;
+import logic.CarQueue;
+import logic.Location;
+import logic.ResCar;
+import model.SimulatorView;
 
 public class Simulator {
 

@@ -1,3 +1,4 @@
+package logic;
 public abstract class Car {
 
     private Location location;

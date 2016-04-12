@@ -1,4 +1,14 @@
+package model;
 import javax.swing.*;
+
+import controller.ButtonController;
+import logic.AdHocCar;
+import logic.Car;
+import logic.Location;
+import logic.ResCar;
+import main.Simulator;
+import view.StatusView;
+
 import java.awt.*;
 
 public class SimulatorView extends JFrame {
