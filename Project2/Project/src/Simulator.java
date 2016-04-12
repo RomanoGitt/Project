@@ -60,7 +60,7 @@ public class Simulator {
 		while (hour > 23) {
 			hour -= 24;
 			day++;
-			totalCarsParked = 0;
+			//totalCarsParked = 0;
 		}
 		while (day > 6) {
 			day -= 7;
