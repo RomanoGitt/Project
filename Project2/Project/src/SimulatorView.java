@@ -263,7 +263,7 @@ public class SimulatorView extends JFrame {
 						if (car instanceof AdHocCar) {
 							Color color = car == null ? Color.white : Color.red;
 							drawPlace(graphics, location, color);
-						} else if (car instanceof ReservationCar) {
+						} else if (car instanceof ResCar) {
 							Color color = car == null ? Color.white : Color.green;
 							drawPlace(graphics, location, color);
 						} else {
