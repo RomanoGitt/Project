@@ -137,13 +137,19 @@ public class SimulatorView extends JFrame {
         return car;
     }
 
-    public Location getFirstFreeLocation() {
+    public Location getFirstFreeLocation(Car car) {
         for (int floor = 0; floor < getNumberOfFloors(); floor++) {
             for (int row = 0; row < getNumberOfRows(); row++) {
                 for (int place = 0; place < getNumberOfPlaces(); place++) {
                     Location location = new Location(floor, row, place);
                     if (getCarAt(location) == null) {
-                        return location;
+                    	if (car instanceof ResCar) {
+                    		if ((floor == 2) && (row > 3)) {
+                    			return location;
+                    		}
+                    	} else {
+                    		return location;
+                    	}
                     }
                 }
             }
@@ -260,19 +266,20 @@ public class SimulatorView extends JFrame {
 					for (int place = 0; place < getNumberOfPlaces(); place++) {
 						Location location = new Location(floor, row, place);
 						Car car = getCarAt(location);
-						if (car instanceof AdHocCar) {
-							Color color = car == null ? Color.white : Color.red;
-							drawPlace(graphics, location, color);
-						} else if (car instanceof ResCar) {
-							Color color = car == null ? Color.white : Color.green;
-							drawPlace(graphics, location, color);
-						} else {
-							if(place >= 60){
-								Color color = car == null ? Color.blue : Color.green;
+						if(car == null) {
+							if ((floor == 2) && (row > 3)) {
+								Color color = Color.green;
+								drawPlace(graphics, location, color);
+							} else {
+								Color color = Color.white;
 								drawPlace(graphics, location, color);
 							}
-							else{
-								Color color = car == null ? Color.white : Color.green;
+						} else {
+							if (car instanceof AdHocCar) {
+								Color color = Color.red;
+								drawPlace(graphics, location, color);
+							} else if (car instanceof ResCar) {
+								Color color = Color.blue;
 								drawPlace(graphics, location, color);
 							}
 						}

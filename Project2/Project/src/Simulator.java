@@ -100,6 +100,7 @@ public class Simulator implements ActionListener {
 		while (hour > 23) {
 			hour -= 24;
 			day++;
+			carsParked = 0;
 		}
 		while (day > 6) {
 			day -= 7;
@@ -117,7 +118,7 @@ public class Simulator implements ActionListener {
 
 		// Add the cars to the back of the queue.
 		for (int i = 0; i < numberOfCarsPerMinute; i++) {
-			if (random.nextInt(10) < 3) {
+			if (random.nextInt(10) < 1) {
 				Car car = new ResCar();
 				entranceCarQueue.addCar(car);
 				//Hier plek reserveren??????????????????????????????????????????????????????????????????????????.........
@@ -135,7 +136,7 @@ public class Simulator implements ActionListener {
 				break;
 			}
 			// Find a space for this car.
-			Location freeLocation = simulatorView.getFirstFreeLocation();
+			Location freeLocation = simulatorView.getFirstFreeLocation(car);
 			if (freeLocation != null) {
 				simulatorView.setCarAt(freeLocation, car);
 				carsParked++;
@@ -163,6 +164,7 @@ public class Simulator implements ActionListener {
 
 			else if (car instanceof ResCar) {
 				car.setIsPaying(true);
+				simulatorView.removeCarAt(car.getLocation());
 				exitCarQueue.addCar(car);
 			}
 		}
