@@ -64,9 +64,11 @@ public class Simulator {
 	 */
 
 	public void tick() {
+		// Update queue views
+		simulatorView.updateQueues(entranceCarQueue.getQueueSize(), paymentCarQueue.getQueueSize(), exitCarQueue.getQueueSize());
+		
 		// Advance the time by one minute.
 		minute++;
-	
 		while (minute > 59) {
 			minute -= 60;
 			hour++;

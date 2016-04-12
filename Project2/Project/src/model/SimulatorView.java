@@ -7,6 +7,7 @@ import logic.Car;
 import logic.Location;
 import logic.ResCar;
 import main.Simulator;
+import view.QueueView;
 import view.StatusView;
 
 import java.awt.*;
@@ -14,6 +15,7 @@ import java.awt.*;
 public class SimulatorView extends JFrame {
     private CarParkView carParkView;
     private StatusView statusView;
+    private QueueView queueView;
     private int numberOfFloors;
     private int numberOfRows;
     private int numberOfPlaces;
@@ -35,9 +37,11 @@ public class SimulatorView extends JFrame {
         Container contentPane = getContentPane();
         carParkView = new CarParkView();
         statusView = new StatusView();
+        queueView = new QueueView();
         buttonController = new ButtonController(sim);
         
         contentPane.add(statusView, BorderLayout.SOUTH);
+        contentPane.add(queueView, BorderLayout.EAST);
 
 
         //contentPane.add(stepLabel, BorderLayout.NORTH);
@@ -83,6 +87,10 @@ public class SimulatorView extends JFrame {
     public void updateStatus(int maxNumberOfPlaces, int currentNumberOfPlaces) {
         statusView.setNumberOfParkingPlaces(maxNumberOfPlaces);
         statusView.setNumberOfCurrentPlaces(currentNumberOfPlaces);
+    }
+    
+    public void updateQueues(int entranceQueue, int paymentQueue, int exitQueue) {
+    	queueView.updateAllQueues(entranceQueue, paymentQueue, exitQueue);
     }
 
     public void setEstimatedIncome(Integer x) {
