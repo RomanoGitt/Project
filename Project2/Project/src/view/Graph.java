@@ -8,8 +8,8 @@ import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
  
 public class Graph extends Application {
-    final static String austria = "Austria";
-    final static String brazil = "Brazil";
+    final static String parkedCars = "Parked Cars";
+    final static String freeSpaces = "Free Spaces";
 
  
     @Override public void start(Stage stage) {
@@ -20,12 +20,12 @@ public class Graph extends Application {
             new BarChart<String,Number>(xAxis,yAxis);
         bc.setTitle("Country Summary");
         xAxis.setLabel("Country");       
-        yAxis.setLabel("Value");
+        yAxis.setLabel("Minuten");
  
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("2003");       
-        series1.getData().add(new XYChart.Data(austria, 25601.34));
-        series1.getData().add(new XYChart.Data(brazil, 20148.82));
+        series1.getData().add(new XYChart.Data(parkedCars, 25601.34));
+        series1.getData().add(new XYChart.Data(freeSpaces, 20148.82));
      
         
         Scene scene  = new Scene(bc,800,600);
