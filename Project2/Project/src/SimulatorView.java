@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class SimulatorView extends JFrame {
     private CarParkView carParkView;
-    private Status statusView;
+    private StatusView statusView;
     private int numberOfFloors;
     private int numberOfRows;
     private int numberOfPlaces;
@@ -23,7 +23,7 @@ public class SimulatorView extends JFrame {
 
         Container contentPane = getContentPane();
         carParkView = new CarParkView();
-        statusView = new Status();
+        statusView = new StatusView();
         buttonController = new ButtonController(sim);
         
         contentPane.add(statusView, BorderLayout.SOUTH);

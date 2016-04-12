@@ -3,7 +3,7 @@ import javax.swing.BoxLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
 
-public class Status extends JPanel {
+public class StatusView extends JPanel {
     private JPanel panel = new JPanel();
     private Integer numberOfParkingPlaces;
     private Integer currentNumberOfPlaces;
@@ -16,14 +16,14 @@ public class Status extends JPanel {
     JLabel lblTotalPlaces = new JLabel("|| Total parking places:");
     JLabel lblTotalParkingPlaces = new JLabel("Placeholder Total");
     JLabel lblEstimatedIncomeTitle = new JLabel("|| Estimated income:");
-    JLabel lblEstimatedIncome = new JLabel("â‚¬0");
+    JLabel lblEstimatedIncome = new JLabel("€0");
     JLabel lblRealIncomeTitle = new JLabel("|| Real income:");
-    JLabel lblRealIncome = new JLabel("â‚¬0");
+    JLabel lblRealIncome = new JLabel("€0");
 
     /**
      * Create the panel.
      */
-    public Status() {
+    public StatusView() {
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         add(panel);
         //panel.setLayout(null);
@@ -75,12 +75,12 @@ public class Status extends JPanel {
 
     public void updateEstimatedIncome(Integer x) {
         estimatedIncome = x;
-        lblEstimatedIncome.setText("â‚¬" + estimatedIncome.toString());
+        lblEstimatedIncome.setText("€" + estimatedIncome.toString());
     }
 
     public void updateRealIncome(Integer x) {
         realIncome = x;
-        lblRealIncome.setText("â‚¬" + realIncome.toString());
+        lblRealIncome.setText("€" + realIncome.toString());
     }
 
     public Integer getNumberOfParkingPlaces() {
