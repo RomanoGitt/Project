@@ -148,13 +148,8 @@ public class Simulator {
 				break;
 			}
 			else if (car instanceof AdHocCar) {
-				if (car.hasParkPass()) {
-					car.setIsPaying(false);
-					paymentCarQueue.addCar(car);
-				} else {
-					car.setIsPaying(true);
-					paymentCarQueue.addCar(car);
-				}
+				car.setIsPaying(true);
+				paymentCarQueue.addCar(car);
 			}
 			else if (car instanceof ResCar) {
 				car.setIsPaying(true);
@@ -187,7 +182,7 @@ public class Simulator {
 			if (car == null) {
 				break;
 			}
-			if (!car.getIsPaying()) {
+			if (car.hasParkPass()) {
 				simulatorView.removeCarAt(car.getLocation());
 				exitCarQueue.addCar(car);
 			} else {
