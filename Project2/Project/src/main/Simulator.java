@@ -64,7 +64,7 @@ public class Simulator {
 	 */
 
 	public void tick() {
-		// Update queue views
+		// Update queue views 
 		simulatorView.updateQueues(entranceCarQueue.getQueueSize(), paymentCarQueue.getQueueSize(), exitCarQueue.getQueueSize());
 		
 		// Advance the time by one minute.
