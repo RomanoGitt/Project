@@ -46,6 +46,7 @@ public class Simulator {
 		numberOfPlaces = simulatorView.getNumberOfFloors() * simulatorView.getNumberOfRows()
 				* simulatorView.getNumberOfPlaces();
 		simulatorView.updateStatus(numberOfPlaces, totalCarsParked);
+		simulatorView.updateSpots(parkedCars, numberOfPlaces);
 
 	}
 
@@ -66,7 +67,8 @@ public class Simulator {
 
 		// Update queue views 
 		simulatorView.updateQueues(entranceCarQueue.getQueueSize(), paymentCarQueue.getQueueSize(), exitCarQueue.getQueueSize());
-		
+		// Update spot views
+		simulatorView.updateSpots(parkedCars, numberOfPlaces);
 
 		// Advance the time by one minute.
 		minute++;
@@ -113,16 +115,18 @@ public class Simulator {
 
 		// Remove car from the front of the queue and assign to a parking space.
 		for (int i = 0; i < enterSpeed; i++) {
-			parkedCars++;
 			//if (car instanceof ReservationCar){ Geef deze gast een gereserveerde plek }.....................................
 			Car car = entranceCarQueue.removeCar();
 			if (car == null) {
 				break;
 			}
+			
 			// Find a space for this car.
 			Location freeLocation = simulatorView.getFirstFreeLocation(car);
 			if (freeLocation != null) {
 				simulatorView.setCarAt(freeLocation, car);
+				parkedCars++;
+				simulatorView.updateSpots(parkedCars, numberOfPlaces);
 				simulatorView.updateStatus(numberOfPlaces, totalCarsParked);
 				simulatorView.setEstimatedIncome(priceToPay * totalCarsParked);
 				int stayMinutes = (int) (15 + random.nextFloat() * 10 * 60);
@@ -186,11 +190,12 @@ public class Simulator {
 
 		// Let cars leave.
 		for (int i = 0; i < exitSpeed; i++) {
-			parkedCars--;
 			Car car = exitCarQueue.removeCar();
 			if (car == null) {
 				break;
 			}
+			parkedCars--;
+			simulatorView.updateStatus(numberOfPlaces, totalCarsParked);
 			// Bye!
 		}
 
