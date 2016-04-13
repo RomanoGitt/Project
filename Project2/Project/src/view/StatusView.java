@@ -12,14 +12,14 @@ public class StatusView extends JPanel {
     private Integer realIncome = 0;
 
     //Labels
-    JLabel lblCarsParked = new JLabel("Cars today:");
+    JLabel lblCarsParked = new JLabel("Cars Total:");
     JLabel lblCurrentCarsParked = new JLabel("Placeholder Current");
     JLabel lblTotalPlaces = new JLabel("|| Total parking places:");
     JLabel lblTotalParkingPlaces = new JLabel("Placeholder Total");
     JLabel lblEstimatedIncomeTitle = new JLabel("|| Estimated income:");
-    JLabel lblEstimatedIncome = new JLabel("€0");
+    JLabel lblEstimatedIncome = new JLabel("ï¿½0");
     JLabel lblRealIncomeTitle = new JLabel("|| Real income:");
-    JLabel lblRealIncome = new JLabel("€0");
+    JLabel lblRealIncome = new JLabel("ï¿½0");
 
     /**
      * Create the panel.
@@ -76,12 +76,12 @@ public class StatusView extends JPanel {
 
     public void updateEstimatedIncome(Integer x) {
         estimatedIncome = x;
-        lblEstimatedIncome.setText("€" + estimatedIncome.toString());
+        lblEstimatedIncome.setText("ï¿½" + estimatedIncome.toString());
     }
 
     public void updateRealIncome(Integer x) {
         realIncome = x;
-        lblRealIncome.setText("€" + realIncome.toString());
+        lblRealIncome.setText("ï¿½" + realIncome.toString());
     }
 
     public Integer getNumberOfParkingPlaces() {
