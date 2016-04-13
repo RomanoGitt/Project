@@ -9,6 +9,7 @@ import logic.ResCar;
 import main.Simulator;
 import view.QueueView;
 import view.StatusView;
+import view.SpotView;
 
 import java.awt.*;
 
@@ -16,6 +17,7 @@ public class SimulatorView extends JFrame {
     private CarParkView carParkView;
     private StatusView statusView;
     private QueueView queueView;
+    private SpotView spotView;
     private int numberOfFloors;
     private int numberOfRows;
     private int numberOfPlaces;
@@ -38,10 +40,12 @@ public class SimulatorView extends JFrame {
         carParkView = new CarParkView();
         statusView = new StatusView();
         queueView = new QueueView();
+        spotView = new SpotView();
         buttonController = new ButtonController(sim);
         
         contentPane.add(statusView, BorderLayout.SOUTH);
         contentPane.add(queueView, BorderLayout.EAST);
+        contentPane.add(spotView, BorderLayout.WEST);
 
 
         //contentPane.add(stepLabel, BorderLayout.NORTH);
@@ -64,17 +68,12 @@ public class SimulatorView extends JFrame {
         buttonStatus.setActionCommand("showStatus");
         buttonStatus.addActionListener(buttonController);
         
-        buttonGraph = new JButton("Spaces Pie");
-        buttonGraph.setActionCommand("showGraph");
-        buttonGraph.addActionListener(buttonController);
-
 
         JToolBar menu = new JToolBar();
         menu.add(button1);
         menu.add(button100);
         menu.add(button1440);
         menu.add(buttonStatus);
-        menu.add(buttonGraph);
 
         contentPane.add(menu, BorderLayout.NORTH);
 
@@ -92,6 +91,11 @@ public class SimulatorView extends JFrame {
     public void updateQueues(int entranceQueue, int paymentQueue, int exitQueue) {
     	queueView.updateAllQueues(entranceQueue, paymentQueue, exitQueue);
     }
+    
+    public void updateSpots(int parkedCars, int totalCars){
+    	spotView.updateAllSpots(parkedCars, totalCars);
+    }
+    
 
     public void setEstimatedIncome(Integer x) {
         statusView.updateEstimatedIncome(x);
