@@ -1,9 +1,11 @@
 package view;
 import javax.swing.JPanel;
+import javax.swing.Box;
 import javax.swing.JLabel;
 
 public class QueueView extends JPanel {
-	private JPanel panel = new JPanel();
+	//private JPanel panel = new JPanel();
+	private Box panel = Box.createVerticalBox();
 	
 	//Variables
 	private Integer entranceQueue;
