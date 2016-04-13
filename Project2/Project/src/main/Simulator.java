@@ -17,7 +17,6 @@ public class Simulator {
 	private CarQueue paymentCarQueue;
 	private CarQueue exitCarQueue;
 	private SimulatorView simulatorView;
-	private Graph graphView;
 
 	private int day = 0;
 	private int hour = 0;
@@ -47,7 +46,6 @@ public class Simulator {
 		numberOfPlaces = simulatorView.getNumberOfFloors() * simulatorView.getNumberOfRows()
 				* simulatorView.getNumberOfPlaces();
 		simulatorView.updateStatus(numberOfPlaces, totalCarsParked);
-		graphView = new Graph();
 	}
 
 	public static void main(String[] args) {
