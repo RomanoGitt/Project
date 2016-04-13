@@ -104,7 +104,11 @@ public class Simulator {
 				totalCarsParked++;
 				resCarsParked++;
 				car.setIsReserved(true);
-				//Hier plek reserveren??????????????????????????????????????????????????????????????????????????.........
+			} else if (random.nextInt(10) > 8) {
+				Car car = new AdHocCar();
+				car.setHasParkPass(true);
+				entranceCarQueue.addCar(car);
+				totalCarsParked++;
 			} else {
 				Car car = new AdHocCar();
 				entranceCarQueue.addCar(car);
@@ -143,16 +147,18 @@ public class Simulator {
 			if (car == null) {
 				break;
 			}
-
 			else if (car instanceof AdHocCar) {
-				car.setIsPaying(true);
-				paymentCarQueue.addCar(car);
+				if (car.hasParkPass()) {
+					car.setIsPaying(false);
+					paymentCarQueue.addCar(car);
+				} else {
+					car.setIsPaying(true);
+					paymentCarQueue.addCar(car);
+				}
 			}
-
 			else if (car instanceof ResCar) {
 				car.setIsPaying(true);
-				simulatorView.removeCarAt(car.getLocation());
-				exitCarQueue.addCar(car);
+				paymentCarQueue.addCar(car);
 			}
 		}
 		
@@ -181,11 +187,16 @@ public class Simulator {
 			if (car == null) {
 				break;
 			}
-			int currentRealIncome = simulatorView.getRealIncome();
-			int newRealIncome = currentRealIncome + priceToPay;
-			simulatorView.setRealIncome(newRealIncome);
-			simulatorView.removeCarAt(car.getLocation());
-			exitCarQueue.addCar(car);
+			if (!car.getIsPaying()) {
+				simulatorView.removeCarAt(car.getLocation());
+				exitCarQueue.addCar(car);
+			} else {
+				int currentRealIncome = simulatorView.getRealIncome();
+				int newRealIncome = currentRealIncome + priceToPay;
+				simulatorView.setRealIncome(newRealIncome);
+				simulatorView.removeCarAt(car.getLocation());
+				exitCarQueue.addCar(car);
+			}
 		}
 
 		// Let cars leave.
