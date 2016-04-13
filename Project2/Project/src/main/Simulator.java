@@ -9,7 +9,7 @@ import logic.CarQueue;
 import logic.Location;
 import logic.ResCar;
 import model.SimulatorView;
-import view.Graph;
+
 
 public class Simulator {
 
@@ -46,6 +46,7 @@ public class Simulator {
 		numberOfPlaces = simulatorView.getNumberOfFloors() * simulatorView.getNumberOfRows()
 				* simulatorView.getNumberOfPlaces();
 		simulatorView.updateStatus(numberOfPlaces, totalCarsParked);
+
 	}
 
 	public static void main(String[] args) {
@@ -62,11 +63,14 @@ public class Simulator {
 	 */
 
 	public void tick() {
+
 		// Update queue views 
 		simulatorView.updateQueues(entranceCarQueue.getQueueSize(), paymentCarQueue.getQueueSize(), exitCarQueue.getQueueSize());
 		
+
 		// Advance the time by one minute.
 		minute++;
+	
 		while (minute > 59) {
 			minute -= 60;
 			hour++;
